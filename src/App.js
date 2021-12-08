@@ -1,28 +1,24 @@
-//import logo from './logo.svg';
-import {BrowserRouter, Route} from 'react-router-dom';
-import React from 'react';
-
 import './App.css';
-import './vendors/fontawesome/css/all.css';
-import 'bootstrap/dist/css/bootstrap.css';
-
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import './Vendors/bootstrap.min.css';
+import DetailsScreen from "./Components/DetailsScreen";
+import HomeScreen from "./Components/HomeScreen";
 import LoginScreen from './Components/LoginScreen';
 import RegisterScreen from './Components/RegisterScreen'
 
 
 function App() {
   return (
-      <BrowserRouter>
-        <div className="container">
-          <Route path={["/", "/login"]} exact={true}>
-            <LoginScreen/>
-          </Route>
-          <Route path="/register" exact={true}>
-            <RegisterScreen/>
-          </Route>
-
-        </div>
-      </BrowserRouter>
+    <div className="container">
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomeScreen/>}></Route>
+                <Route path="/details/:id" element={<DetailsScreen/>}></Route>
+              <Route path="/login" element={<LoginScreen/>}></Route>
+              <Route path="/register" element={<RegisterScreen/>}></Route>
+            </Routes>
+        </BrowserRouter>
+    </div>
   );
 }
 
