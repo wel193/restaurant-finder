@@ -6,8 +6,8 @@ import './App.css';
 import './vendors/fontawesome/css/all.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import LoginScreen from './views/Login';
-import RegisterScreen from './views/Register'
+import LoginScreen from './Components/LoginScreen';
+import RegisterScreen from './Components/RegisterScreen'
 
 
 function App() {
