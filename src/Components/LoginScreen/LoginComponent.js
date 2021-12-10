@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useState} from "react"
 
 const LoginComponent = () => {
+  const [loginUsername, setLoginUsername] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const loginHandler = () => {
+
+  }
   return(
       <>
         <div className="d-flex card input-group">
@@ -12,15 +18,15 @@ const LoginComponent = () => {
                 <label className="form-label"
                        htmlFor="username">Username</label>
                 <input className="form-control" type="text" id="username"
-                       name="username" autoFocus required/>
+                       name="username" onChange={e => setLoginUsername(e.target.value)} autoFocus required/>
               </div>
               <div className="mb-3">
                   <label className="form-label"
                          htmlFor="password">Password</label>
                   <input className="form-control" type="password" id="password"
-                         name="password" required/>
+                         name="password" onChange={e => setLoginPassword(e.target.value)} required/>
               </div>
-              <button className="btn btn-success btn-block">Login</button>
+              <button className="btn btn-success btn-block" onClick={loginHandler}>Login</button>
           </div>
         </div>
       </>

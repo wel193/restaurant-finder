@@ -33,7 +33,7 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/"
+                            <Link to="/login"
                                   className={`nav-link ${active === 'login' ? 'active' : ''}`}>
                                     Login / Sign Up
                             </Link>
