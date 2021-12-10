@@ -1,8 +1,27 @@
 import React, {useState} from 'react';
+import {useDispatch} from "react-redux";
+import {createReview} from "../../Services/review-service";
 
-const AddReview = () => {
-    const [review, setReview] = useState('');
-    const [rating, setRating] = useState('');
+const AddReview = ({id}) => {
+    const [content, setContent] = useState('');
+    const [rating, setRating] = useState(3);
+    const dispatch = useDispatch();
+
+    // TODO: add user, restaurant
+    const createHandler = () => {
+        const newReview = {
+            user: {
+                avatarIcon: "/Images/cat-avatar.jpg",
+                userName: 'JohnDoe'
+            },
+            content,
+            rating,
+            date: new Date()
+        }
+        createReview(newReview, dispatch);
+    }
+
+
 
     return (
         <div className="bg-transparent">
@@ -14,7 +33,7 @@ const AddReview = () => {
                     className="form-control"
                     id="review"
                     placeholder="Add your review here."
-                    onChange={(event) => {setReview(event.target.value)}}>
+                    onChange={(event) => {setContent(event.target.value)}}>
                 </textarea>
             </div>
             <div className="mt-2 form-group">
@@ -31,6 +50,11 @@ const AddReview = () => {
                     <option>5</option>
                 </select>
             </div>
+            <button
+                className="btn btn-primary mt-3"
+                onClick={createHandler}>
+                Add
+            </button>
         </div>
     )
 }

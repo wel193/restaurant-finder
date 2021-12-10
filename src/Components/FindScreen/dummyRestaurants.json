@@ -1,0 +1,14 @@
+[
+  {
+    "restaurantName": "ABC",
+    "description": "lorem ipsum",
+    "hours": "Monday-Friday 11-5",
+    "address": "sdcaskdjsldkasdakda",
+    "city": "San Jose",
+    "phone": "123-456-7890",
+    "website": "www.test.com",
+    "images": []
+  }
+
+
+]

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import DetailsScreen from "../Components/DetailsScreen";
+import DetailsScreen from "../DetailsScreen";
 
 const Navigation = ({active}) => {
     return(
