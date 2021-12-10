@@ -1,22 +1,25 @@
 import React, {useState} from 'react';
 import {userRegister} from '../../Services/userService';
-import {useDispatch} from 'react-redux';
-
+import {useNavigate} from 'react-router-dom';
 
 const RegisterComponent = () => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
+  const [errorMsg, setErrorMsg] = useState("")
+  const navigate = useNavigate();
   const registerHandler = () => {
     userRegister({
       username: registerUsername,
       email: registerEmail,
       password: registerPassword
-    })
+    }).then(()=>{navigate('/')})
+        .catch(()=>setErrorMsg("Error: A user with the given username or email is already registered"))
   }
   return(
       <>
         <div className="d-flex card input-group">
+          <h3>{errorMsg}</h3>
           <div className="card-body">
             <h5 className="card-title">
               Register

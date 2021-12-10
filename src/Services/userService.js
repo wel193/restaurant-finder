@@ -8,5 +8,5 @@ export const userRegister = (info) =>
     headers:{
       'content-type': 'application/json',
     }})
-    .then(response => {if (response.status === 500){console.log("error")} response.json()})
+    .then(response => response.json())
 
