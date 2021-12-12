@@ -1,12 +1,13 @@
 import React, {useEffect} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from 'react-router-dom';
 import DetailsScreen from "../Components/DetailsScreen";
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const selectUser = (state) => state.user;
 
 const Navigation = ({active}) => {
     const user = useSelector(selectUser);
+    const dispatch = useDispatch;
     console.log(user)
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -40,8 +41,8 @@ const Navigation = ({active}) => {
                         {
                             user &&
                             <li className="nav-item">
-                                <Link to="/logout"
-                                      className={`nav-link ${active === 'login' ? 'active' : ''}`}>
+                                <Link to="/"
+                                      className={`nav-link`} onClick={()=>{dispatch({type: 'user-logout'})}}>
                                     Logout
                                 </Link>
                             </li>

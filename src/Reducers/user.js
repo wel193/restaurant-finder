@@ -7,6 +7,9 @@ const user = (state=null, action) =>{
       console.log("reducer register", action.user)
 
       return action.user
+    case 'user-logout':
+      console.log("reducer logout")
+      return null
     default:
       return state
   }
