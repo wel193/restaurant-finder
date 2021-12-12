@@ -6,14 +6,16 @@ const RegisterComponent = () => {
   const [registerUsername, setRegisterUsername] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
+  const [registerRole, setRegisterRole] = useState("");
   const [errorMsg, setErrorMsg] = useState("")
   const navigate = useNavigate();
   const registerHandler = () => {
     userRegister({
       username: registerUsername,
       email: registerEmail,
-      password: registerPassword
-    }).then(()=>{navigate('/')})
+      password: registerPassword,
+      role: registerRole
+    }).then(()=>{navigate('/login')})
         .catch(()=>setErrorMsg("Error: A user with the given username or email is already registered"))
   }
   return(
@@ -40,6 +42,15 @@ const RegisterComponent = () => {
                      htmlFor="password">Password</label>
               <input className="form-control" type="password" id="password"
                      name="password" onChange={e => setRegisterPassword(e.target.value)} required/>
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="role">Role:</label>
+              <select className="form-select" onChange={e => setRegisterRole(e.target.value)}>
+                <option defaultValue={"USER"}>Please select a role</option>
+                <option value="USER">User</option>
+                <option value="HOST">Host</option>
+                <option value="ADMIN">Admin</option>
+              </select>
             </div>
             <button className="btn btn-success btn-block" onClick={registerHandler}>Register</button>
           </div>

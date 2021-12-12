@@ -34,6 +34,6 @@ function App() {
           </div>
       </Provider>
   );
-};
+}
 
 export default App;
