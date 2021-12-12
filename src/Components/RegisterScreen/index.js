@@ -5,7 +5,7 @@ import Navigation from '../../Navigation';
 const RegisterScreen = () => {
   return(
       <div className="container mt-2">
-        <Navigation/>
+        <Navigation active="register"/>
         <RegisterComponent/>
       </div>
 
