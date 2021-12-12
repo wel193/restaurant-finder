@@ -1,15 +1,23 @@
 import React, {useState} from "react"
+import {userLogin} from '../../Services/userService';
+import {useNavigate} from 'react-router-dom';
 
 const LoginComponent = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
+  const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
   const loginHandler = () => {
-
+    userLogin({
+      username: loginUsername,
+      password: loginPassword
+    }).then(()=>navigate('/'))
+        .catch(()=>setErrorMsg("Login information is not valid"))
   }
   return(
       <>
         <div className="d-flex card input-group">
+          <h3>{errorMsg}</h3>
           <div className="card-body">
             <h5 className="card-title">
               Login

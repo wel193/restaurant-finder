@@ -8,5 +8,17 @@ export const userRegister = (info) =>
     headers:{
       'content-type': 'application/json',
     }})
-    .then(response => response.json())
+    .then(response => console.log(response.json()))
 
+export const userLogin = (info) =>
+    fetch(LOGIN_API, {
+      method: 'POST',
+      body:JSON.stringify(info),
+      headers:{
+        'content-type': 'application/json',
+      }
+    }).then(response => {
+      if (response.ok){
+        return "success"
+      }
+      else {return response.json()}})
