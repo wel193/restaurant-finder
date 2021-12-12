@@ -1,6 +1,7 @@
 import './App.css';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import './Vendors/bootstrap.min.css';
+import './Components/rf.css';
 import DetailsScreen from "./Components/DetailsScreen";
 import HomeScreen from "./Components/HomeScreen";
 import {combineReducers, createStore} from "redux";

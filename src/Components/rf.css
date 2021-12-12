@@ -1,0 +1,37 @@
+
+/*font sizes*/
+.rf-font-60px {
+    font-size: 60px;
+}
+.rf-font-80px {
+    font-size: 80px;
+}
+.rf-font-20px {
+    font-size: 20px;
+}
+
+/*font weights*/
+.rf-font-bold {
+    font-weight: bold;
+}
+
+/*font decorations*/
+.rf-font-shadow {
+    text-shadow: 2px 2px 8px black;
+}
+.rf-font-stroke-black-2px {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+/*font colors*/
+.rf-font-color-white {
+    color: white;
+}
+
+/*borders*/
+.rf-rounded-border-30px {
+    border-radius: 30px;
+}
+
+

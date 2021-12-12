@@ -16,11 +16,11 @@ const DetailsScreen = () => {
                 <Navigation active='find'/>
             </div>
             <div className="mb-3">
-                <RestaurantInfo/>
+                <RestaurantInfo id={id}/>
             </div>
             <div className="mb-3">
                 <h1>Reviews</h1>
-                <Reviews/>
+                <Reviews id={id}/>
             </div>
             <div className="mb-3">
                 <h1>Add a Review</h1>

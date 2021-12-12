@@ -27,7 +27,7 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/details/1"
+                            <Link to="/find"
                                   className={`nav-link ${active === 'find' ? 'active' : ''}`}>
                                     Find Restaurants
                             </Link>
