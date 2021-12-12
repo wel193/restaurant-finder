@@ -8,7 +8,7 @@ const ReviewItem = ({review}) => {
                 <div className="col-md-2 d-none d-md-block">
                     <img
                         alt="avatar"
-                        src={review.avatar}
+                        src={review.user.avatarIcon}
                         className="rounded-circle d-none d-md-block"
                         width="100px"/>
                 </div>
@@ -21,7 +21,7 @@ const ReviewItem = ({review}) => {
                             width="100px"/>
                         <div className="d-flex align-items-center">
                             <div className="col-10">
-                                {review.userName}
+                                {review.user.userName}
                             </div>
                             <div className="col-2 d-flex justify-content-end">
                                 <Rating rating={review.rating}/>

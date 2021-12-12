@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rating = (rating) => {
+const Rating = ({rating}) => {
     if (rating < 2) {
         return(
             <i className="fas fa-star"></i>

@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import Reviews from "../Reviews";
 import RestaurantInfo from "../RestaurantInfo";
 import './detailsScreen.css';
-import Navigation from "../../Navigation";
+import Navigation from "../Navigation";
 import AddReview from "./AddReview";
 
 const DetailsScreen = () => {
@@ -16,15 +16,15 @@ const DetailsScreen = () => {
                 <Navigation active='find'/>
             </div>
             <div className="mb-3">
-                <RestaurantInfo/>
+                <RestaurantInfo id={id}/>
             </div>
             <div className="mb-3">
                 <h1>Reviews</h1>
-                <Reviews/>
+                <Reviews id={id}/>
             </div>
             <div className="mb-3">
                 <h1>Add a Review</h1>
-                <AddReview/>
+                <AddReview id={id}/>
             </div>
         </div>
     )

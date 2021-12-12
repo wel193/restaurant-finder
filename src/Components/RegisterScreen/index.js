@@ -1,6 +1,6 @@
 import React from "react";
 import RegisterComponent from './RegisterComponent';
-import Navigation from '../../Navigation';
+import Navigation from '../Navigation';
 
 const RegisterScreen = () => {
   return(

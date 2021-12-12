@@ -1,4 +1,4 @@
-const user = (state, action) =>{
+const user = (state=null, action) =>{
   switch (action.type){
     case 'fetch-user':
       console.log("reducer fetch", action.user)

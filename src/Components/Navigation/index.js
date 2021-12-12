@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import DetailsScreen from "../Components/DetailsScreen";
+import DetailsScreen from "../DetailsScreen";
 
 const Navigation = ({active}) => {
     return(
@@ -27,7 +27,7 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/details/1"
+                            <Link to="/find"
                                   className={`nav-link ${active === 'find' ? 'active' : ''}`}>
                                     Find Restaurants
                             </Link>

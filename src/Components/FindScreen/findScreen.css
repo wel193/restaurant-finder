@@ -1,0 +1,22 @@
+input {
+    color: black !important;
+    z-index: 99;
+    height: 60px;
+}
+
+input::placeholder {
+    color: black !important;
+}
+
+input:focus {
+    border: 0;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+.rf-search-box{
+    width: 50% !important;
+    background-color: white;
+}
+
+
