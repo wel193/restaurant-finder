@@ -1,19 +1,3 @@
-// Restaurant{
-//     id,
-//     address,
-//     title,
-//     details,
-//     cuisine,
-//     photo
-// }
-// User:{
-//     id,
-//     name,
-//     email,
-//     address,
-//     type:{user, restaurant, admin}
-// }
-
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom";
@@ -52,6 +36,7 @@ const ProfileComponent = ({profile}) => {
 
     return (
         <>
+            {/*todo UI of profile edit page*/}
             <div className="container">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
@@ -118,3 +103,19 @@ const ProfileComponent = ({profile}) => {
 }
 
 export default ProfileComponent;
+
+// Restaurant{
+//     id,
+//     address,
+//     title,
+//     details,
+//     cuisine,
+//     photo
+// }
+// User:{
+//     id,
+//     name,
+//     email,
+//     address,
+//     type:{user, restaurant, admin}
+// }
