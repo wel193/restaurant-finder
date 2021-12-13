@@ -26,9 +26,9 @@ export const userLogin = (dispatch, info) =>
           user
         }))
 
-export const isLoggedIn = () =>
-    fetch(USER_API)
-        .then(response => console.log("is logged in ", response))
+// export const isLoggedIn = () =>
+//     fetch(USER_API)
+//         .then(response => console.log("is logged in ", response))
 
 // export const userLogout = (dispatch) =>
 //     fetch(LOGOUT_API)

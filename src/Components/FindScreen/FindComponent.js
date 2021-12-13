@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {findRestaurantsByName} from "../../Services/restaurant-service";
+import {fetchGoogleMapRestaurant} from "../../Services/googlemap-service";
 import './findScreen.css';
 import FindItem from "./FindItem";
 import Navigation from "../Navigation";
+import FindGoogleMapItem from './FindGoogleMapItem';
 
 const FindComponent = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -12,6 +14,11 @@ const FindComponent = () => {
     const find = () => {
         findRestaurantsByName(input)
             .then(restaurants => setRestaurants(restaurants));
+    }
+
+    const fetchRestaurants = () => {
+        fetchGoogleMapRestaurant()
+
     }
 
     return (
@@ -43,13 +50,14 @@ const FindComponent = () => {
                                     onClick={find}
                                     className="input-group-text bg-transparent">
                                     <i className="fas fa-search"></i>
-                                </div>
+                                </div>``
                             </span>
                             <input
                                  placeholder="Find Restaurants"
                                  className="form-control py-2 bg-transparent"
                                  onChange={(event) => setInput(event.target.value)}/>
                         </div>
+                        <button className="btn btn-success btn-block" onClick={fetchRestaurants}>Google Map Search</button>
                     </div>
                 </div>
             </div>
@@ -61,7 +69,7 @@ const FindComponent = () => {
                         {
                             restaurants.map(restaurant => {
                                 return(
-                                    <FindItem restaurant={restaurant}/>
+                                    <FindGoogleMapItem restaurant={restaurant}/>
                                     )
                             })
                         }
