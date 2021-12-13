@@ -68,6 +68,15 @@ const Navigation = ({active}) => {
                                 Privacy Policy
                             </Link>
                         </li>
+
+                        {/*<li className="nav-item" style={}>*/}
+                        {/*    <Link to="/"*/}
+                        {/*          className={`nav-link ${active === 'loggedIn' ? 'active' : ''}`}>*/}
+                        {/*        <i className="fas fa-user"></i>*/}
+                        {/*    </Link>*/}
+                        {/*</li>*/}
+
+
                     </ul>
                 </div>
             </div>
