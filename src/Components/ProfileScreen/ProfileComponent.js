@@ -38,6 +38,8 @@ const ProfileComponent = ({profile}) => {
         <>
             {/*todo UI of profile edit page*/}
             <div className="container">
+                <p>this is from profile page</p>
+
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input onChange={(event) =>
@@ -104,18 +106,3 @@ const ProfileComponent = ({profile}) => {
 
 export default ProfileComponent;
 
-// Restaurant{
-//     id,
-//     address,
-//     title,
-//     details,
-//     cuisine,
-//     photo
-// }
-// User:{
-//     id,
-//     name,
-//     email,
-//     address,
-//     type:{user, restaurant, admin}
-// }
