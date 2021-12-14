@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {findRestaurantsByName} from "../../Services/restaurant-service";
-import {fetchGoogleMapRestaurant} from "../../Services/googlemap-service";
+import {fetchRestaurants} from "../../Services/googlemap-service";
 import './findScreen.css';
 import FindItem from "./FindItem";
 import Navigation from "../Navigation";
-import FindGoogleMapItem from './FindGoogleMapItem';
 
 const FindComponent = () => {
     const [restaurants, setRestaurants] = useState([]);
@@ -16,10 +15,9 @@ const FindComponent = () => {
             .then(restaurants => setRestaurants(restaurants));
     }
 
-    const fetchRestaurants = () => {
-
-        fetchGoogleMapRestaurant()
-            .then(data => console.log("fetch", data))
+    const clickFetchRestaurantsHandler = () => {
+        fetchRestaurants(input)
+            .then(data => {console.log("fetch", data); return setRestaurants(data)})
     }
 
     return (
@@ -54,11 +52,11 @@ const FindComponent = () => {
                                 </div>``
                             </span>
                             <input
-                                 placeholder="Find Restaurants"
+                                 placeholder="search restaurants by cuisine"
                                  className="form-control py-2 bg-transparent"
                                  onChange={(event) => setInput(event.target.value)}/>
                         </div>
-                        <button className="btn btn-success btn-block" onClick={fetchRestaurants}>Google Map Search</button>
+                        <button className="btn btn-success btn-block" onClick={clickFetchRestaurantsHandler}>Google Map Search</button>
                     </div>
                 </div>
             </div>
@@ -69,8 +67,9 @@ const FindComponent = () => {
                     <ul className="list-group">
                         {
                             restaurants.map(restaurant => {
+                                if (restaurant.name)
                                 return(
-                                    <FindGoogleMapItem restaurant={restaurant}/>
+                                    <FindItem restaurant={restaurant}/>
                                     )
                             })
                         }

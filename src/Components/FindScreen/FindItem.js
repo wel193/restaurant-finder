@@ -3,6 +3,7 @@ import Rating from "../Reviews/Rating";
 import {Link} from 'react-router-dom';
 
 const FindItem = ({restaurant}) => {
+    // console.log("find item", restaurant)
     return (
         <li className="list-group-item mb-2">
             <div className="row">
@@ -12,20 +13,20 @@ const FindItem = ({restaurant}) => {
                         {/*when screen size < md, render image on top*/}
                         <div className="d-block d-md-none text-center mb-3">
                             <img
-                                src={restaurant.images[0] || `/Images/restaurant-img-1.jpg`}
+                                src={`/Images/restaurant-img-1.jpg`}
                                 alt="avatar"
                                 width="400px"/>
                         </div>
                         {/*restaurant info*/}
                         <div>
                             <div>
-                                <h2>{restaurant.restaurantName}</h2>
+                                <h2>{restaurant.name}</h2>
                             </div>
                             <div className="d-flex flex-column">
                                 <h4>Information</h4>
                                 <span>Address: {restaurant.address}</span>
                                 <span>Phone: {restaurant.phone}</span>
-                                <span>Hours: {restaurant.hours}</span>
+                                <span>Rating: {restaurant.rating}</span>
                                 <span>Website: {restaurant.website}</span>
                             </div>
                             <div className="mt-2">
@@ -33,7 +34,7 @@ const FindItem = ({restaurant}) => {
                                 <span>{restaurant.description}</span>
                             </div>
                             <div className="mt-2">
-                                <Link to={`/details/${restaurant._id}`}>
+                                <Link to={`/details/${restaurant.location_id}`}>
                                     <button className="btn btn-primary">
                                         Details
                                     </button>
@@ -46,7 +47,7 @@ const FindItem = ({restaurant}) => {
                 <div className="col-md-5 d-none d-md-block">
                     <div className="d-flex justify-content-end">
                         <img
-                            src={restaurant.images[0] || `/Images/restaurant-img-1.jpg`}
+                            src={`/Images/restaurant-img-1.jpg`}
                             alt="avatar"
                             width="400px"/>
                     </div>
