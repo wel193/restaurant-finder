@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {userLogin} from "../../Services/userService";
-import {updateCurrentProfile} from "../../Services/profileService";
+import {updateCurrentProfile, updateProfile} from "../../Services/profileService";
 
 
 const selectUser = (state) => state.user;
@@ -38,7 +38,7 @@ const ProfileComponent = () => {
     }
 
     const saveClickHandler = () => {
-        updateCurrentProfile(dispatch, {
+        updateProfile(dispatch, {
             username: username.newUsername,
             address: address.newAddress
         }).then((res) => {console.log("Profile Saved!", res)})

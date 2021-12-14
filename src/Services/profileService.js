@@ -27,8 +27,19 @@ export const updateCurrentProfile = (dispatch, profile) =>
                 profile
             }));
 
+export const updateProfile = (profile) =>
+    fetch(`${URL}/${profile._id}`, {
+        method: 'PUT',
+        body: JSON.stringify(profile),
+        headers: {
+            'content-type': 'application/json'
+        }
+    }).then(response => response.json());
+
+
 
 export default {
-    updateCurrentProfile, getCurrentProfile
+    updateCurrentProfile, getCurrentProfile,
+    updateProfile
 };
 
