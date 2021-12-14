@@ -41,7 +41,7 @@ const ProfileComponent = () => {
         updateCurrentProfile(dispatch, {
             username: username.newUsername,
             address: address.newAddress
-        });
+        }).then((res) => {console.log("Profile Saved!", res)})
     }
 
 
