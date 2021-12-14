@@ -26,11 +26,8 @@ export const updateCurrentProfile = (dispatch, profile) =>
                 profile
             }));
 
-    // .then(response => response.json());
-
 
 export default {
     updateCurrentProfile, getCurrentProfile
 };
-
 
