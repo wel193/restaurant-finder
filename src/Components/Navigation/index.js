@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 const selectUser = (state) => state.user;
-
 const Navigation = ({active}) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch;
@@ -37,14 +36,15 @@ const Navigation = ({active}) => {
                                     Find Restaurants
                             </Link>
                         </li>
-                        {
-                            user &&
-                            <li className="nav-item">
-                                <Link to="/"
-                                      className={`nav-link`} onClick={()=>{dispatch({type: 'user-logout'})}}>
-                                    Logout
-                                </Link>
-                            </li>
+                        {user &&
+                        <li className="nav-item">
+                            <Link to="/"
+                                  className={`nav-link`} onClick={() => {
+                                dispatch({type: 'user-logout'})
+                            }}>
+                                Logout
+                            </Link>
+                        </li>
                         }
                         {
                             !user &&
@@ -69,12 +69,14 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
 
-                        {/*<li className="nav-item" style={}>*/}
-                        {/*    <Link to="/"*/}
-                        {/*          className={`nav-link ${active === 'loggedIn' ? 'active' : ''}`}>*/}
-                        {/*        <i className="fas fa-user"></i>*/}
-                        {/*    </Link>*/}
-                        {/*</li>*/}
+                        {
+                            user &&
+                        <li className="nav-item" >
+                            <Link to="/profile"
+                                  className={`nav-link`}>
+                                <i className="fas fa-user"></i>
+                            </Link>
+                        </li>}
 
 
                     </ul>

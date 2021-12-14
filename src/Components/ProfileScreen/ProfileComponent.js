@@ -1,17 +1,17 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from "react-router-dom";
 import {updateCurrentProfile} from "../../Services/profileService"
+const selectProfile = (state) => state.profile.profile;
 
-
-const ProfileComponent = ({profile}) => {
+const ProfileComponent = () => {
     const dispatch = useDispatch();
+    const profile = useSelector(selectProfile)
     const [userProfile, setUserProfile] = useState(profile);
-    // const [userID, setUserID] = useState("");
-    // const [userName, setUserName] = useState("");
-    // const [userEmail, setUserEmail] = useState("");
-    // const [userAddress, setUserAddress] = useState("");
-
+    const [userID, setUserID] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+    const [userAddress, setUserAddress] = useState("");
 
     const saveClickHandler = () => {
         const _profile = {...userProfile,
