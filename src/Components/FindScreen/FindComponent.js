@@ -3,16 +3,16 @@ import {findRestaurantsByName} from "../../Services/restaurant-service";
 import './findScreen.css';
 import FindItem from "./FindItem";
 import Navigation from "../Navigation";
+import {fetchPlacesByName} from "../../Services/google-service";
 
 const FindComponent = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [input, setInput] = useState('');
-    console.log(restaurants);
 
     const find = () => {
         findRestaurantsByName(input)
             .then(restaurants => setRestaurants(restaurants));
-    }
+    };
 
     return (
         <div>
