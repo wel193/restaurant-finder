@@ -25,3 +25,12 @@ export const updateCurrentProfile = (dispatch, profile) =>
                 type: 'edit-profile',
                 profile
             }));
+
+    // .then(response => response.json());
+
+
+export default {
+    updateCurrentProfile, getCurrentProfile
+};
+
+

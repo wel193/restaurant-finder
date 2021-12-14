@@ -1,21 +1,41 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from "react-router-dom";
-import {updateCurrentProfile} from "../../Services/profileService"
-const selectProfile = (state) => state.profile.profile;
+import {getCurrentProfile, updateCurrentProfile} from "../../Services/profileService"
+import service from '../../Services/profileService';
 
+
+const selectProfile = (state) => state.profile.profile;
 const ProfileComponent = () => {
     const dispatch = useDispatch();
     const profile = useSelector(selectProfile)
-    const [userProfile, setUserProfile] = useState(profile);
-    const [userID, setUserID] = useState("");
-    const [userName, setUserName] = useState("");
-    const [userEmail, setUserEmail] = useState("");
-    const [userAddress, setUserAddress] = useState("");
+    const [userProfile, setUserProfile] = useState([]);
+    // const [userID, setUserID] = useState("");
+    // const [userName, setUserName] = useState("");
+    // const [userEmail, setUserEmail] = useState("");
+    // const [userAddress, setUserAddress] = useState("");
+
+    // const findProfileByEmail = (profile) =>
+    //     service.findProfileByEmail(profile.email)
+    //         .then(profile => setProfile(profile));
+
+    // const updateProfile = (event) =>
+    //     setProfile({...profile, email: event.target.value});
+    //
+    // const saveProfile = () =>
+    //     service.updateProfile(profile)
+    //         .then(() => setProfile(
+    //             profiles.map(m => m._id === profile._id ? profile : m)
+    //         ));
+
+    useEffect(() =>
+        service.getCurrentProfile()
+            .then(profiles => setUserProfile(profiles)));
+
+
 
     const saveClickHandler = () => {
         const _profile = {...userProfile,
-            id: userProfile.id,
             name: userProfile.name,
             email: userProfile.email,
             address: userProfile.address,
@@ -37,6 +57,18 @@ const ProfileComponent = () => {
     return (
         <>
             {/*todo UI of profile edit page*/}
+            <ul className="list-group">
+                {
+                    profile.map(user =>
+                        <li key={user.name}
+                            className="list-group-item">
+                            {user.email}
+                        </li>
+                    )
+                }
+            </ul>
+
+
             <div className="container">
                 <p>this is from profile page</p>
 
