@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {findRestaurantById} from "../../Services/restaurant-service";
 
-const RestaurantInfo = ({id}) => {
-    const [restaurant, setRestaurant] = useState('');
-    findRestaurantById(id).then(restaurant => setRestaurant(restaurant));
+const RestaurantInfo = ({restaurant}) => {
 
     return(
         <div>
@@ -20,10 +18,9 @@ const RestaurantInfo = ({id}) => {
                     Address
                 </div>
                 <div className="card-body">
-                    Address
+                    {restaurant.address}
                 </div>
             </div>
-
         </div>
     );
 }

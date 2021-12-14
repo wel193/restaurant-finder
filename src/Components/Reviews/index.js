@@ -1,13 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ReviewItem from "./ReviewItem";
-import {findAllReviews} from "../../Services/review-service";
+import {findReviewsByRestaurantId} from "../../Services/review-service";
 import {useDispatch, useSelector} from "react-redux";
 
-const Reviews = (id) => {
-    const reviews = useSelector(state => state.reviews);
+const Reviews = ({restaurant}) => {
+    // const reviews = useSelector(state => state.reviews);
+    const [reviews, setReviews] = useState([]);
     const dispatch = useDispatch();
-    useEffect(() => findAllReviews(dispatch), []);
-    console.log(reviews);
+
+    useEffect(() =>
+        findReviewsByRestaurantId(restaurant._id)
+            .then(resultReviews => console.log(resultReviews)), []);
+
+
     return (
         <div>
             <ul className="list-group">

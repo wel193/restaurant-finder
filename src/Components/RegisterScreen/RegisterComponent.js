@@ -14,7 +14,8 @@ const RegisterComponent = () => {
       username: registerUsername,
       email: registerEmail,
       password: registerPassword,
-      role: registerRole
+      role: registerRole,
+      avatarIcon: "/Images/cat-avatar.jpg"
     }).then(()=>{navigate('/login')})
         .catch(()=>setErrorMsg("Error: A user with the given username or email is already registered"))
   }
