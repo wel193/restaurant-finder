@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import RestaurantInfo from "../RestaurantInfo";
 import './detailsScreen.css';
 import Navigation from "../Navigation";

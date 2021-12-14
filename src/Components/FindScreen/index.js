@@ -13,9 +13,6 @@ const FindScreen = () => {
             <div className="mb-3">
                 <FindComponent/>
             </div>
-            <Link to="/details/293919">
-                Example details of 293919
-            </Link>
         </div>
     )
 }
