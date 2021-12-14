@@ -7,7 +7,7 @@ const selectUser = (state) => state.user;
 const Navigation = ({active}) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch;
-    console.log(user)
+    console.log("navigation user", user)
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">

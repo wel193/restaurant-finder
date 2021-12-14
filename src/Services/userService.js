@@ -20,15 +20,15 @@ export const userLogin = (dispatch, info) =>
       body:JSON.stringify(info),
       headers:{
         'content-type': 'application/json',
-      }}).then( response=>{console.log(response.json); return response.json() })
+      }}).then( response=>{console.log("userLogin", response.json); return response.json() })
         .then(user => dispatch({
           type: "user-login",
           user
         }))
 
-export const isLoggedIn = () =>
-    fetch(USER_API)
-        .then(response => console.log("is logged in ", response))
+// export const isLoggedIn = () =>
+//     fetch(USER_API)
+//         .then(response => console.log("is logged in ", response))
 
 // export const userLogout = (dispatch) =>
 //     fetch(LOGOUT_API)
