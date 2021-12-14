@@ -4,16 +4,20 @@ import {Link} from "react-router-dom";
 import {getCurrentProfile, updateCurrentProfile} from "../../Services/profileService"
 import service from '../../Services/profileService';
 
-
+const selectUser = (state) => state.user;
 const selectProfile = (state) => state.profile.profile;
+
 const ProfileComponent = () => {
     const dispatch = useDispatch();
     const profile = useSelector(selectProfile)
+    const user = useSelector(selectUser)
+    console.log("in profile component", user)
+    const user_id = user.id;
+
     const [userProfile, setUserProfile] = useState([]);
-    // const [userID, setUserID] = useState("");
-    // const [userName, setUserName] = useState("");
-    // const [userEmail, setUserEmail] = useState("");
-    // const [userAddress, setUserAddress] = useState("");
+    const [userName, setUserName] = useState("");
+    const [userAddress, setUserAddress] = useState("");
+    
 
     // const findProfileByEmail = (profile) =>
     //     service.findProfileByEmail(profile.email)
