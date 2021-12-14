@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from "../Navigation";
 import FindComponent from "./FindComponent";
 import {Link} from "react-router-dom";
+import {fetchDetails} from "../../Services/travel-service";
 
 const FindScreen = () => {
     return (
@@ -12,8 +13,8 @@ const FindScreen = () => {
             <div className="mb-3">
                 <FindComponent/>
             </div>
-            <Link to="/details/61b3030cc7e07b15e8b418e1">
-                Details
+            <Link to="/details/293919">
+                Example details of 293919
             </Link>
         </div>
     )

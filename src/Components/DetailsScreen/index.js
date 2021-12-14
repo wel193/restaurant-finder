@@ -4,27 +4,24 @@ import RestaurantInfo from "../RestaurantInfo";
 import './detailsScreen.css';
 import Navigation from "../Navigation";
 import AddReview from "./AddReview";
-import {findRestaurantById} from "../../Services/restaurant-service";
 import {useDispatch, useSelector} from "react-redux";
 import {findReviewsByRestaurantId} from "../../Services/review-service";
 import ReviewItem from "../Reviews/ReviewItem";
+import {fetchDetails} from "../../Services/travel-service";
 
 const DetailsScreen = () => {
     // assuming path is /details/:id
     const { id } = useParams();
+    console.log(id);
     const dispatch = useDispatch();
     const [restaurant, setRestaurant] = useState({});
     const reviews = useSelector(state => state.reviews);
+    const user = useSelector(state => state.user);
 
     useEffect(() => {
-        findRestaurantById(id)
-            .then(restaurant => setRestaurant(restaurant))
-            .then(res => findReviewsByRestaurantId(id, dispatch));
+        fetchDetails(id).then(data => setRestaurant(data));
+        findReviewsByRestaurantId(id, dispatch);
     }, []);
-
-    // retrieve current user
-    const user = useSelector(state => state.user);
-    console.log(user);
 
     return (
         <div>
@@ -37,6 +34,7 @@ const DetailsScreen = () => {
             <div className="mb-5">
                 <h1>Reviews</h1>
                 <div>
+                    {reviews.length === 0 && <span>No Reviews Yet</span>}
                     <ul className="list-group">
                         {
                             reviews.map(review => {

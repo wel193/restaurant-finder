@@ -25,7 +25,7 @@ const ReviewItem = ({review}) => {
                 <div className="col-12 col-md-10">
                     <div className="d-flex flex-column">
                         <img
-                            alt="avatar"
+                            alt="icon"
                             src={review.user && review.user.avatarIcon}
                             className="rounded-circle d-block d-md-none"
                             width="100px"/>
