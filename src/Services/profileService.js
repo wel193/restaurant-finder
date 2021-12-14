@@ -1,9 +1,10 @@
 // todo update external port url
 // let PROFILE_API = process.env.PORT ? 'https://node-on-heroku-ingrid.herokuapp.com/api/profile': 'http://localhost:4000/api/profile'
-const PROFILE_API = 'http://localhost:4000/api/profile';
+// const PROFILE_API = 'http://localhost:4000/api/profile';
+let USER_API = 'http://localhost:4000/user'
 
 export const getCurrentProfile = (dispatch) =>
-    fetch(PROFILE_API)
+    fetch(USER_API)
         .then(response => response.json())
         .then(profile =>
             dispatch({
@@ -13,7 +14,7 @@ export const getCurrentProfile = (dispatch) =>
         );
 
 export const updateCurrentProfile = (dispatch, profile) =>
-    fetch(`${PROFILE_API}`, {
+    fetch(`${USER_API}`, {
         method: 'PUT',
         body: JSON.stringify(profile),
         headers: {
