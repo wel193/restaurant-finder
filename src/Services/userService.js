@@ -20,7 +20,7 @@ export const userLogin = (dispatch, info) =>
       body:JSON.stringify(info),
       headers:{
         'content-type': 'application/json',
-      }}).then( response=>{console.log(response.json); return response.json() })
+      }}).then( response=>{console.log("userLogin", response.json); return response.json() })
         .then(user => dispatch({
           type: "user-login",
           user

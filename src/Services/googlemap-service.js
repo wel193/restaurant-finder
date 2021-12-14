@@ -10,7 +10,6 @@ const API = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?locati
 //         .then(response => response.json())
 //         .then(res => console.log(res))
 //         .catch(e => console.log("request failed", e));
-
 export const fetchGoogleMapRestaurant = () => {
   fetch(
       "https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?latitude=12.91285&longitude=100.87808&limit=30&currency=USD&distance=2&open_now=false&lunit=km&lang=en_US",
@@ -21,11 +20,12 @@ export const fetchGoogleMapRestaurant = () => {
           "x-rapidapi-key": "deee31c169msh4751c1110662115p1ab8b8jsnec8483191d17"
         }
       })
-      .then(response =>
-      {console.log(response.json()); return response.json()}
-      )
-      .then(data => {console.log(data)})
-      .catch(err => {
-        console.log(err);
-      });
+      .then(response => {console.log(response); return response.json()})
+      // .then(data =>
+      //   dispatch({
+      //     type:'fetch-api-restaurants',
+      //     restaurants: data.data
+      //   }))
+
+
 }

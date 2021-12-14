@@ -17,8 +17,9 @@ const FindComponent = () => {
     }
 
     const fetchRestaurants = () => {
-        fetchGoogleMapRestaurant()
 
+        fetchGoogleMapRestaurant()
+            .then(data => console.log("fetch", data))
     }
 
     return (
