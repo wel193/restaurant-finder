@@ -6,8 +6,15 @@
 .rf-font-80px {
     font-size: 80px;
 }
+.rf-font-25px {
+    font-size: 25px;
+}
+
 .rf-font-20px {
     font-size: 20px;
+}
+.rf-font-18px {
+    font-size: 18px;
 }
 
 /*font weights*/
@@ -28,10 +35,21 @@
 .rf-font-color-white {
     color: white;
 }
+.rf-color-darkgray {
+    color: grey;
+}
+
 
 /*borders*/
 .rf-rounded-border-30px {
     border-radius: 30px;
+}
+
+/*width*/
+.rf-small-btn {
+    width: 100px;
+    font-size: 12px;
+    padding: 4px;
 }
 
 

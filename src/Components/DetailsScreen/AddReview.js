@@ -1,32 +1,34 @@
 import React, {useState} from 'react';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {createReview} from "../../Services/review-service";
+import {useNavigate} from "react-router-dom";
 
-const AddReview = ({id}) => {
+const AddReview = ({restaurant, user}) => {
     const [content, setContent] = useState('');
     const [rating, setRating] = useState(3);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    // TODO: add user, restaurant
     const createHandler = () => {
         const newReview = {
-            user: {
-                avatarIcon: "/Images/cat-avatar.jpg",
-                userName: 'JohnDoe'
-            },
+            restaurant,
+            user,
             content,
             rating,
             date: new Date()
         }
-        createReview(newReview, dispatch);
+        createReview(newReview, dispatch)
+            .then(status => navigate(`/details/${restaurant.location_id}`));
     }
-
 
 
     return (
         <div className="bg-transparent">
             <div className="form-group">
-                <div for="review" className="form-label rf-font-20px">
+                <div className="alert alert-success rd-font-20px">
+                    Logged in as: <span>{user.username}</span>
+                </div>
+                <div for="review" className="form-label rf-font-20px rf-font-bold">
                     Review:
                 </div>
                 <textarea
@@ -37,7 +39,7 @@ const AddReview = ({id}) => {
                 </textarea>
             </div>
             <div className="mt-2 form-group">
-                <div for="rating" className="form-label rf-font-20px">
+                <div for="rating" className="form-label rf-font-20px rf-font-bold">
                     Rating:
                 </div>
                 <select

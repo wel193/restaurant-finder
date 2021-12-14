@@ -1,7 +1,10 @@
 import React from 'react';
 import './homeScreen.css';
+import {useSelector} from "react-redux";
 
 const HomeContent = (user) => {
+    const currentUser = useSelector(state => state.user);
+
     return(
         <div>
             <div>
@@ -16,8 +19,11 @@ const HomeContent = (user) => {
                 <img
                     src="/Images/restaurant-img-1.jpg"/>
                 <div className="card-body">
-                    <div className="card-title">
-                        // Insert our title
+                    <div className="card-title rf-font-60px">
+                        {
+                            currentUser &&
+                            <div>Welcome back, {currentUser.username}!</div>
+                        }
                     </div>
                     <div className="card-text">
                         // Insert our content

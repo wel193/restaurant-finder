@@ -9,7 +9,14 @@ export const findAllReviews = (dispatch) =>
         }));
 
 
-// TODO: add findReviewsByRestaurantId
+export const findReviewsByRestaurantId = (id, dispatch) =>
+    fetch(`${REVIEW_API}/${id}`)
+        .then(response => response.json())
+        .then(reviews => dispatch({
+            type: 'find-reviews-by-rid',
+            reviews
+        }));
+
 
 export const createReview = (review, dispatch) =>
     fetch(REVIEW_API, {
@@ -24,6 +31,17 @@ export const createReview = (review, dispatch) =>
             type: 'create-review',
             review
         }));
+
+export const deleteReview = (review, dispatch) =>
+    fetch(`${REVIEW_API}/${review._id}`, {
+        method: 'DELETE'
+    })
+        .then(response => dispatch({
+            type: 'delete-review',
+            review
+        }));
+
+
 
 
 

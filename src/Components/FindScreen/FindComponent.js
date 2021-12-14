@@ -1,25 +1,17 @@
-import React, {useState} from 'react';
-import {findRestaurantsByName} from "../../Services/restaurant-service";
+import React, {useEffect, useState} from 'react';
 import {fetchRestaurants} from "../../Services/googlemap-service";
 import './findScreen.css';
 import FindItem from "./FindItem";
 import Geocode from "react-geocode";
-import Navigation from "../Navigation";
 
 const FindComponent = () => {
     const [restaurants, setRestaurants] = useState([]);
     const [input, setInput] = useState('');
     const [errMsg, setErrMsg] = useState('');
-    console.log(restaurants);
 
     Geocode.setApiKey("AIzaSyBxAZcol1lZpwRDCPDe9hShzaCJrTOoISI");
     Geocode.setLanguage("en");
     Geocode.enableDebug();
-
-    const find = () => {
-        findRestaurantsByName(input)
-            .then(restaurants => setRestaurants(restaurants));
-    }
 
     const clickFetchRestaurantsHandler = () => {
         Geocode.fromAddress(input).then(
@@ -33,7 +25,6 @@ const FindComponent = () => {
         ).catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
 
     }
-
 
     return (
         <div>
@@ -63,14 +54,14 @@ const FindComponent = () => {
                                 <div
                                     className="input-group-text bg-transparent">
                                     <i className="fas fa-search"></i>
-                                </div>``
+                                </div>
                             </span>
                             <input
                                  placeholder="search restaurants"
                                  className="form-control py-2 bg-transparent"
                                  onChange={(event) => setInput(event.target.value)}/>
                         </div>
-                        <button className="btn btn-success btn-block" onClick={clickFetchRestaurantsHandler}>Search</button>
+                        <button className="btn btn-success mt-2 btn-block" onClick={clickFetchRestaurantsHandler}>Search</button>
                     </div>
                 </div>
             </div>
