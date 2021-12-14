@@ -11,6 +11,7 @@ import HomeScreen from "./Components/HomeScreen";
 import LoginScreen from './Components/LoginScreen';
 import RegisterScreen from './Components/RegisterScreen';
 import FindScreen from "./Components/FindScreen";
+import ProfileScreen from "./Components/ProfileScreen";
 
 import reviews from "./Reducers/reviews";
 import user from './Reducers/user'
@@ -29,11 +30,12 @@ function App() {
                         <Route path="/details/:id" element={<DetailsScreen/>}></Route>
                         <Route path="/login" element={<LoginScreen/>}></Route>
                         <Route path="/register" element={<RegisterScreen/>}></Route>
+                        <Route path="/profile" element={<ProfileScreen/>}></Route>
                   </Routes>
               </BrowserRouter>
           </div>
       </Provider>
   );
-};
+}
 
 export default App;

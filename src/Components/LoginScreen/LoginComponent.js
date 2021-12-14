@@ -1,19 +1,22 @@
 import React, {useState} from "react"
-import {userLogin} from '../../Services/userService';
+import {userLogin, getUser} from '../../Services/userService';
 import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
 const LoginComponent = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const loginHandler = () => {
-    userLogin({
+    userLogin(dispatch, {
       username: loginUsername,
       password: loginPassword
-    }).then(()=>navigate('/'))
+    }).then((res)=>{console.log("success", res); navigate('/')})
         .catch(()=>setErrorMsg("Login information is not valid"))
   }
+
   return(
       <>
         <div className="d-flex card input-group">
