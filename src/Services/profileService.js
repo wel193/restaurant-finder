@@ -1,6 +1,6 @@
 // todo update external port url
 // let PROFILE_API = process.env.PORT ? 'https://node-on-heroku-ingrid.herokuapp.com/api/profile': 'http://localhost:4000/api/profile'
-// const PROFILE_API = 'http://localhost:4000/api/profile';
+const PROFILE_API = 'http://localhost:4000/api/profile';
 let USER_API = 'http://localhost:4000/user'
 
 export const getCurrentProfile = (dispatch) =>
