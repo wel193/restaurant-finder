@@ -1,12 +1,11 @@
-let latitude = "37.3361905"
-let longitude = "-121.890583"
+
 // export const fetchGoogleMapRestaurant = () =>
 //     fetch(API,{mode: 'no-cors', method: "GET", headers: {'Content-Type': 'application/json'}})
 //         .then(response => response.json())
 //         .then(res => console.log(res))
 //         .catch(e => console.log("request failed", e));
-export const fetchRestaurants = (location) =>
-    fetch(`https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?latitude=${latitude}&longitude=${longitude}&limit=30&currency=USD&distance=2&lunit=km&lang=en_US`,
+export const fetchRestaurants = (lat, lng) =>
+    fetch(`https://travel-advisor.p.rapidapi.com/restaurants/list-by-latlng?latitude=${lat}&longitude=${lng}&limit=30&currency=USD&distance=2&lunit=km&lang=en_US`,
         {
           "method": "GET",
           "headers": {
@@ -16,4 +15,4 @@ export const fetchRestaurants = (location) =>
         })
         .then(response => response.json())
         .then(data => data.data)
-        .catch(e=>console.log(e))
+        .catch(e=>console.error(e))

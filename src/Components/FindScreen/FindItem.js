@@ -3,7 +3,7 @@ import Rating from "../Reviews/Rating";
 import {Link} from 'react-router-dom';
 
 const FindItem = ({restaurant}) => {
-    // console.log("find item", restaurant)
+    console.log("find item", restaurant)
     return (
         <li className="list-group-item mb-2">
             <div className="row">
@@ -47,7 +47,7 @@ const FindItem = ({restaurant}) => {
                 <div className="col-md-5 d-none d-md-block">
                     <div className="d-flex justify-content-end">
                         <img
-                            src={`/Images/restaurant-img-1.jpg`}
+                            src={restaurant.photo? restaurant.photo.images.large.url:"/Images/restaurant-img-1.jpg"}
                             alt="avatar"
                             width="400px"/>
                     </div>
