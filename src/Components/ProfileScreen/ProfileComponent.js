@@ -1,107 +1,95 @@
 import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import {Link} from "react-router-dom";
-import {updateCurrentProfile} from "../../Services/profileService"
+import {useDispatch, useSelector} from "react-redux";
+import {userLogin} from "../../Services/userService";
+import {updateCurrentProfile, updateProfile} from "../../Services/profileService";
 
 
-const ProfileComponent = ({profile}) => {
+const selectUser = (state) => state.user;
+const selectProfile = (state) => state.profile.profile;
+
+const ProfileComponent = () => {
     const dispatch = useDispatch();
-    const [userProfile, setUserProfile] = useState(profile);
-    // const [userID, setUserID] = useState("");
-    // const [userName, setUserName] = useState("");
-    // const [userEmail, setUserEmail] = useState("");
-    // const [userAddress, setUserAddress] = useState("");
+    const profile = useSelector(selectProfile)
+    console.log("============in profile component, profile:", profile)
+    const user = useSelector(selectUser)
+    console.log("============in profile component, user: ", user)
+
+
+    // if (user) {
+    //     const user_id = user.id;
+    //     console.log("=====userid:", user_id)
+    // }
+    // console.log("user id", user._id)
+    // console.log("user name:", user.username)
+    // console.log("user email:", user.email)
+
+    let [username, setUsername] = useState({newUsername: user.username});
+    let [address, setAddress] = useState({newAddress: user.address});
+
+    const nameChangeHandler = (e) => {
+        const username = e.target.value;
+        const newUsername = {newUsername : username};
+        setUsername(newUsername);
+    }
+    const addressChangeHandler = (e) => {
+        const address = e.target.value;
+        const newAddress = {newAddress : address};
+        setAddress(newAddress);
+    }
 
     const saveClickHandler = () => {
-        const _profile = {...userProfile,
-            id: userProfile.id,
-            name: userProfile.name,
-            email: userProfile.email,
-            address: userProfile.address,
-            type: userProfile.type
-
-        };
-
-        updateCurrentProfile(dispatch, _profile);
-    }
-    const saveClickXHandler = () => {
-        dispatch({
-            type: 'discard-change'
-        })
+        updateProfile(dispatch, {
+            username: username.newUsername,
+            address: address.newAddress
+        }).then((res) => {console.log("Profile Saved!", res)})
     }
 
-    const handleChange = (newProfile) =>
-        setUserProfile(newProfile);
 
-    return (
+    return(
         <>
-            {/*todo UI of profile edit page*/}
+            <br/>
             <div className="container">
-                <p>this is from profile page</p>
+                <div className="col-10">
+                    <div style={{ fontSize: '20px' }}>
+                        Edit Profile
+                    </div>
 
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input onChange={(event) =>
-                        handleChange({...userProfile, id: event.target.value})}
-                           type="text" className="form-control" id="username"
-                           placeholder="Username"
-                           value={userProfile.id}/>
                 </div>
 
-                <div className="form-group">
+                <div className="mt-2">
                     <label htmlFor="name">Name</label>
-                    <input onChange={(event) =>
-                        handleChange({...userProfile, name: event.target.value})}
-                           type="text" className="form-control" id="name"
-                           placeholder="Name"
-                           value={userProfile.name}/>
+                    <textarea id="name" style={{width: "100%"}}
+                              value={username.newUsername} onChange={nameChangeHandler}>
+                                {user.username}
+                            </textarea>
+                </div>
+                <div className="mt-2 ">
+                    <label htmlFor="bio">Address</label>
+                    <textarea name='address' style={{width: "100%"}}
+                              value={user.newAddress} onChange={addressChangeHandler}>
+                                {user.address}
+                            </textarea>
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input onChange={(event) =>
-                        handleChange({...userProfile, email: event.target.value})}
-                           type="text" className="form-control" id="email"
-                           placeholder="Email"
-                           value = {userProfile.email}/>
+                <div className="col-1">
+                        <button className="btn btn-success btn-block"
+                                onClick={saveClickHandler}>
+                                Save
+                        </button>
                 </div>
-
-                <div className="form-group">
-                    <label htmlFor="website">Phone</label>
-                    <input onChange={(event) =>
-                        handleChange({...userProfile, address: event.target.value})}
-                           type="text" className="form-control" id="phone"
-                           placeholder="Phone Number"
-                           value = {userProfile.address}/>
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="Street">Location</label>
-                    <input onChange={(event) =>
-                        handleChange({...userProfile, type: event.target.value})}
-                           type="text" className="form-control" id="location"
-                           placeholder="Location"
-                           value = {userProfile.type}/>
-                </div>
-
-                <br/>
-                <Link to="/profile">
-                    <button type="button" id="submit" name="submit"
-                            className="btn btn-primary" onClick={saveClickHandler}>Update
-                    </button>
-                </Link>
-                <Link to="/profile">
-                    <button type="button" id="submit" name="submit"
-                            className="btn btn-secondary" onClick={saveClickXHandler}>Cancel
-                    </button>
-                </Link>
 
 
 
             </div>
+
+
+
+
         </>
-    );
-}
+    )
+};
+
+
 
 export default ProfileComponent;
 

@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../../Services/userService';
 
 const selectUser = (state) => state.user;
-
 const Navigation = ({active}) => {
     const user = useSelector(selectUser);
     const dispatch = useDispatch();

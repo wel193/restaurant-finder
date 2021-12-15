@@ -16,8 +16,9 @@ import ProfileScreen from "./Components/ProfileScreen";
 import reviews from "./Reducers/reviews";
 import user from './Reducers/user'
 import LogoutComponent from './Components/LogoutComponent';
+import profile from './Reducers/profile'
 
-const reducer = combineReducers({reviews, user});
+const reducer = combineReducers({reviews, user, profile});
 const store = createStore(reducer);
 
 function App() {

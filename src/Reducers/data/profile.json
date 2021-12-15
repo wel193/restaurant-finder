@@ -1,7 +1,7 @@
 [
   {
   "id": "r001",
-  "name": "Voyager Craft Cofee",
+  "name": "Voyager Craft Coffee",
   "email": "service@voyagercafe.com",
   "address": "3985 Stevens Creek Blvd, Santa Clara, CA 95051",
   "type": "restaurant",
@@ -11,7 +11,6 @@
     "photo": ""
   },
   {
-    "id": "u002",
     "name": "Laney",
     "email": "laneybla@gmail.com",
     "address": "123 Tia Blvd, Santa Clara, CA 94031",
