@@ -17,6 +17,7 @@ import reviews from "./Reducers/reviews";
 import user from './Reducers/user'
 import LogoutComponent from './Components/LogoutComponent';
 import profile from './Reducers/profile'
+import Privacy from "./Components/Privacy";
 
 const reducer = combineReducers({reviews, user, profile});
 const store = createStore(reducer);
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/register" element={<RegisterScreen/>}></Route>
                         <Route path="/profile" element={<ProfileScreen/>}></Route>
                         <Route path="/logout" element={<LogoutComponent/>}></Route>
+                      <Route path="/privacy" element={<Privacy/>}></Route>
                   </Routes>
               </BrowserRouter>
           </div>
