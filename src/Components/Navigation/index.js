@@ -65,7 +65,7 @@ const Navigation = ({active}) => {
                             </li>
                         }
                         <li className="nav-item">
-                            <Link to="/"
+                            <Link to="/privacy"
                                   className={`nav-link ${active === 'privacy' ? 'active' : ''}`}>
                                 Privacy Policy
                             </Link>
