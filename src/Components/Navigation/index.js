@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {getUser, userLogout} from '../../Services/userService';
+import {getUser} from '../../Services/userService';
 
 const selectUser = (state) => state.user;
 
@@ -71,13 +71,14 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
 
-                        {/*<li className="nav-item" style={}>*/}
-                        {/*    <Link to="/"*/}
-                        {/*          className={`nav-link ${active === 'loggedIn' ? 'active' : ''}`}>*/}
-                        {/*        <i className="fas fa-user"></i>*/}
-                        {/*    </Link>*/}
-                        {/*</li>*/}
-
+                        {user &&
+                        <li className="nav-item">
+                            <Link to="/profile"
+                                  className={`nav-link ${active === 'profile' ? 'active' : ''}`}>
+                                <i className="fas fa-user"></i>
+                            </Link>
+                        </li>
+                        }
 
                     </ul>
                 </div>

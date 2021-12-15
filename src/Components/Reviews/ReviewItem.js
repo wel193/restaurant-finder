@@ -3,9 +3,10 @@ import Rating from "./Rating";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteReview} from "../../Services/review-service";
 import {convertDate} from "./convertDate";
+const selectUser = (state) => state.user;
 
 const ReviewItem = ({review}) => {
-    const user = useSelector(state => state.user);
+    const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
     const deleteOwnReview = () => {

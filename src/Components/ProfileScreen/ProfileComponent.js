@@ -12,7 +12,6 @@ const ProfileComponent = ({profile}) => {
     // const [userEmail, setUserEmail] = useState("");
     // const [userAddress, setUserAddress] = useState("");
 
-
     const saveClickHandler = () => {
         const _profile = {...userProfile,
             id: userProfile.id,

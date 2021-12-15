@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {findReviewsByRestaurantId} from "../../Services/review-service";
 import ReviewItem from "../Reviews/ReviewItem";
 import {fetchDetails} from "../../Services/travel-service";
+import {getUser} from '../../Services/userService';
 
 const DetailsScreen = () => {
     // assuming path is /details/:id
@@ -22,6 +23,7 @@ const DetailsScreen = () => {
         fetchDetails(id).then(data => setRestaurant(data));
         findReviewsByRestaurantId(id, dispatch);
     }, []);
+    useEffect(()=>getUser(dispatch), [dispatch])
 
     return (
         <div>

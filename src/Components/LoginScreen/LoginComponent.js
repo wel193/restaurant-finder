@@ -7,12 +7,13 @@ const LoginComponent = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginHandler = () => {
     userLogin(dispatch, {
       username: loginUsername,
       password: loginPassword
-    }).then((res)=>{console.log("success", res)})
+    }).then((res)=>{console.log("success", res); navigate('/')})
         .catch(()=>setErrorMsg("Login information is not valid"))
   }
 
