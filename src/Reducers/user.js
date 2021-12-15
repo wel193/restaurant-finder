@@ -4,11 +4,11 @@ const user = (state=null, action) =>{
       console.log("reducer fetch", action.user)
       return action.user
     case 'user-login':
-      console.log("reducer register", action.user)
+      console.log("reducer login", action.user)
 
       return action.user
     case 'user-logout':
-      console.log("reducer logout")
+      console.log("reducer logout", action.user)
       return null
     default:
       return state

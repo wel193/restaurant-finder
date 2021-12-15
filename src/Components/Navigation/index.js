@@ -1,13 +1,15 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
+import {getUser, userLogout} from '../../Services/userService';
 
 const selectUser = (state) => state.user;
 
 const Navigation = ({active}) => {
     const user = useSelector(selectUser);
-    const dispatch = useDispatch;
-    console.log("navigation user", user)
+    const dispatch = useDispatch();
+    useEffect(()=>getUser(dispatch), [dispatch])
+
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
@@ -40,8 +42,8 @@ const Navigation = ({active}) => {
                         {
                             user &&
                             <li className="nav-item">
-                                <Link to="/"
-                                      className={`nav-link`} onClick={()=>{dispatch({type: 'user-logout'})}}>
+                                <Link to="/logout"
+                                      className={`nav-link`}>
                                     Logout
                                 </Link>
                             </li>

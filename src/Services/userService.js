@@ -1,4 +1,3 @@
-import {useNavigate} from 'react-router-dom';
 
 let REGISTER_API = 'http://localhost:4000/register'
 let LOGIN_API = 'http://localhost:4000/login'
@@ -20,20 +19,30 @@ export const userLogin = (dispatch, info) =>
       body:JSON.stringify(info),
       headers:{
         'content-type': 'application/json',
-      }}).then( response=>{console.log("userLogin", response.json); return response.json() })
+      }}).then( response=>{console.log("userLogin", response.json);  return response.json()})
         .then(user => dispatch({
           type: "user-login",
           user
         }))
 
+export const getUser = (dispatch) =>
+  fetch(USER_API)
+      .then(res => {console.log("get user", res.json); return res.json()})
+      .then(user => dispatch({
+        type: "fetch-user",
+        user
+      }))
+      .catch(e => console.log(e))
+
+
 // export const isLoggedIn = () =>
 //     fetch(USER_API)
 //         .then(response => console.log("is logged in ", response))
 
-// export const userLogout = (dispatch) =>
-//     fetch(LOGOUT_API)
-// .then(response => console.log("is logged out", response))
-// .then(user => dispatch({
-//   type: "user-logout"
-// }))
-// .catch(e=>console.log(e))
+export const userLogout = (dispatch) =>
+    fetch(LOGOUT_API)
+        .then(res => {console.log("user logout", res); return res})
+  // .then(response => dispatch({
+  //   type: "user-logout"
+  //   }))
+  .catch(e=>console.error(e))

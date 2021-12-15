@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import {userLogin, getUser} from '../../Services/userService';
+import {userLogin, getUser, userLogout} from '../../Services/userService';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
@@ -7,14 +7,23 @@ const LoginComponent = () => {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const loginHandler = () => {
     userLogin(dispatch, {
       username: loginUsername,
       password: loginPassword
-    }).then((res)=>{console.log("success", res); navigate('/')})
+    }).then((res)=>{console.log("success", res)})
         .catch(()=>setErrorMsg("Login information is not valid"))
+  }
+
+  const getUserClickHandler = () =>{
+    getUser(dispatch)
+        .then(res=>console.log("get user handler", res))
+  }
+  const logoutClickHandler = () =>{
+    console.log("log out")
+    userLogout()
+        .then(res=>console.log("after log out", res))
   }
 
   return(
@@ -38,6 +47,8 @@ const LoginComponent = () => {
                          name="password" onChange={e => setLoginPassword(e.target.value)} required/>
               </div>
               <button className="btn btn-success btn-block" onClick={loginHandler}>Login</button>
+            {/*<button className="btn btn-success btn-block" onClick={getUserClickHandler}>Get</button>*/}
+            {/*<button className="btn btn-success btn-block" onClick={logoutClickHandler}>Get</button>*/}
           </div>
         </div>
       </>
