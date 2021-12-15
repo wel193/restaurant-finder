@@ -27,17 +27,20 @@ const Navigation = ({active}) => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/"
-                                  className={`nav-link ${active === 'about' ? 'active' : ''}`}>
-                                    About Us
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/find"
                                   className={`nav-link ${active === 'find' ? 'active' : ''}`}>
                                     Find Restaurants
                             </Link>
                         </li>
+                        {
+                            user && user.role === 'HOST' &&
+                            <li className="nav-item">
+                            <Link to="/post"
+                            className={`nav-link`}>
+                            Post
+                            </Link>
+                            </li>
+                        }
                         {
                             user &&
                             <li className="nav-item">

@@ -2,7 +2,7 @@ const RESTAURANT_API = "http://localhost:4000/api/restaurants";
 
 export const findRestaurantsByName = (name) =>
     fetch(`${RESTAURANT_API}/${name}`)
-        .then(response => response.json())
+        .then(response => {console.log("fetch restaurant by name", response.json); return response.json()})
 
 export const findRestaurantsByCity = (city) =>
     fetch(`${RESTAURANT_API}/${city}`)
@@ -12,5 +12,12 @@ export const findRestaurantById = (id) =>
     fetch(`${RESTAURANT_API}/${id}`)
         .then(response => response.json())
 
-
-
+export const postRestaurant = (info) =>
+    fetch(RESTAURANT_API,{
+      method: 'POST',
+      body: JSON.stringify(info),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+        .then(res =>{console.log("post restaurant", res); return res.json()})

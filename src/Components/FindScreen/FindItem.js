@@ -26,7 +26,6 @@ const FindItem = ({restaurant}) => {
                                 <h4>Information</h4>
                                 <span>Address: {restaurant.address}</span>
                                 <span>Phone: {restaurant.phone}</span>
-                                <span>Rating: {restaurant.rating}</span>
                                 <span>Website: {restaurant.website}</span>
                             </div>
                             <div className="mt-2">

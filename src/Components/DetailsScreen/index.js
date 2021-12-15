@@ -53,7 +53,7 @@ const DetailsScreen = () => {
                 <AddReview restaurant={restaurant} user={user}/>
                 }
                 {!user &&
-                <div className="alert alert-danger">Please login to add a review.</div>}
+                <div className="alert alert-danger">Please login a user account to add a review.</div>}
             </div>
         </div>
     )

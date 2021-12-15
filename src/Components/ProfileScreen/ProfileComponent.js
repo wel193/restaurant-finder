@@ -44,6 +44,9 @@ const ProfileComponent = () => {
                         <div className="card-title">
                             Email: {user.email}
                         </div>
+                    <div className="card-title">
+                        Role: {user.role}
+                    </div>
                 <div className="mb-3">
                     <label className="form-label" htmlFor="avatarIconUrl">Avatar Icon Url:</label>
                     <input className="form-control" type="text" name='avatarIconUrl'

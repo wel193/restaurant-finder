@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {fetchRestaurants} from "../../Services/googlemap-service";
+import {findRestaurantsByName} from "../../Services/restaurant-service";
 import './findScreen.css';
 import FindItem from "./FindItem";
 import Geocode from "react-geocode";
@@ -24,6 +25,12 @@ const FindComponent = () => {
             }
         ).catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
 
+    }
+
+    const findRestaurantsHandler = () => {
+        findRestaurantsByName(input)
+            .then(restaurants => setRestaurants(restaurants))
+            .catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
     }
 
     return (
@@ -61,7 +68,8 @@ const FindComponent = () => {
                                  className="form-control py-2 bg-transparent"
                                  onChange={(event) => setInput(event.target.value)}/>
                         </div>
-                        <button className="btn btn-success mt-2 btn-block" onClick={clickFetchRestaurantsHandler}>Search</button>
+                        <button className="btn btn-success mt-2 btn-block" onClick={clickFetchRestaurantsHandler}>Search in remote Api</button>
+                        <button className="btn btn-success mt-2 btn-block" onClick={findRestaurantsHandler}>Search in our database</button>
                     </div>
                 </div>
             </div>
@@ -73,7 +81,7 @@ const FindComponent = () => {
                     <ul className="list-group">
                         {
                             restaurants.map(restaurant => {
-                                if (restaurant.name)
+                                if (restaurant && restaurant.name)
                                 return(
                                     <FindItem restaurant={restaurant}/>
                                     )

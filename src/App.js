@@ -18,6 +18,7 @@ import user from './Reducers/user'
 import LogoutComponent from './Components/LogoutComponent';
 import profile from './Reducers/profile'
 import Privacy from "./Components/Privacy";
+import PostRestaurantScreen from './Components/PostRestaurantsScreen';
 
 const reducer = combineReducers({reviews, user, profile});
 const store = createStore(reducer);
@@ -36,6 +37,7 @@ function App() {
                         <Route path="/profile" element={<ProfileScreen/>}></Route>
                         <Route path="/logout" element={<LogoutComponent/>}></Route>
                       <Route path="/privacy" element={<Privacy/>}></Route>
+                    <Route path="/post" element={<PostRestaurantScreen/>}></Route>
                   </Routes>
               </BrowserRouter>
           </div>
