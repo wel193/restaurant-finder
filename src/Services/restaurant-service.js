@@ -12,6 +12,15 @@ export const findRestaurantById = (id) =>
     fetch(`${RESTAURANT_API}/${id}`)
         .then(response => response.json())
 
+export const findRestaurantsByAuthor = (dispatch, author) =>
+    fetch(`${RESTAURANT_API}/author/${author}`)
+        .then(response => response.json())
+        .then(restaurants =>
+        dispatch({
+          type:"fetch-restaurants",
+          restaurants
+        }))
+
 export const postRestaurant = (info) =>
     fetch(RESTAURANT_API,{
       method: 'POST',

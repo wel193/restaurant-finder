@@ -13,7 +13,7 @@ const PostRestaurantScreen = () => {
       <div className="container mt-2">
         <Navigation active="login"/>
         {user && user.role ==='HOST' &&
-        <PostFrom host={user.username}/>
+        <PostFrom host={user}/>
         }
         {!user &&
         <h5>Please log in before checking your this page!</h5>

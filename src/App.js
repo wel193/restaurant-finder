@@ -14,13 +14,14 @@ import FindScreen from "./Components/FindScreen";
 import ProfileScreen from "./Components/ProfileScreen";
 
 import reviews from "./Reducers/reviews";
-import user from './Reducers/user'
+import user from './Reducers/user';
+import restaurants from './Reducers/restaurants'
 import LogoutComponent from './Components/LogoutComponent';
 import profile from './Reducers/profile'
 import Privacy from "./Components/Privacy";
 import PostRestaurantScreen from './Components/PostRestaurantsScreen';
 
-const reducer = combineReducers({reviews, user, profile});
+const reducer = combineReducers({reviews, user, profile, restaurants});
 const store = createStore(reducer);
 
 function App() {

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import {userRegister} from '../../Services/userService';
 import {useNavigate} from 'react-router-dom';
 import {postRestaurant} from '../../Services/restaurant-service';
-import RegisterComponent from '../RegisterScreen/RegisterComponent';
 
 const PostForm = ({host}) => {
   const [name, setName] = useState("");
@@ -22,7 +20,8 @@ const PostForm = ({host}) => {
       address: address,
       phone: phone,
       website: website,
-      photo:{images:{large:{url:image}}}
+      photo:{images:{large:{url:image}}},
+      author: host._id
     }).then(res => {console.log("success post"); navigate('/find')})
         .catch(e => console.error(e))
   }
