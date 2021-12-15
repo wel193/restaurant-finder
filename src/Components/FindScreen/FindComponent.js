@@ -10,7 +10,7 @@ const FindComponent = () => {
     const [input, setInput] = useState('');
     const [errMsg, setErrMsg] = useState('');
 
-    Geocode.setApiKey("AIzaSyBxAZcol1lZpwRDCPDe9hShzaCJrTOoISI");
+    Geocode.setApiKey(`${process.env.REACT_APP_GOOGLEMAP_API_KEY}`);
     Geocode.setLanguage("en");
     Geocode.enableDebug();
 
@@ -22,6 +22,7 @@ const FindComponent = () => {
                 setErrMsg("");
                 fetchRestaurants(lat, lng)
                     .then(data => {console.log("fetch", data); return setRestaurants(data)})
+                    .catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
             }
         ).catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
 
