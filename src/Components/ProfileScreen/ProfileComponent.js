@@ -36,18 +36,25 @@ const ProfileComponent = () => {
             <div className="d-flex card input-group">
                 <div className="card-body">
                 <h5 className="card-title">
-                    Register
+                    Profile
                 </h5>
+                        <div className="card-title">
+                            Username: {user.username}
+                        </div>
+                        <div className="card-title">
+                            Email: {user.email}
+                        </div>
                 <div className="mb-3">
                     <label className="form-label" htmlFor="avatarIconUrl">Avatar Icon Url:</label>
                     <input className="form-control" type="text" name='avatarIconUrl'
                               placeholder={avatarIcon} onChange={avatarChangeHandler}>
                             </input>
                 </div>
+
                 <div className="mb-3">
                         <button className="btn btn-success btn-block"
                                 onClick={updateClickHandler}>
-                                Save
+                                Update Avatar Icon
                         </button>
                 </div>
                 </div>
