@@ -33,11 +33,13 @@ const FindItem = ({restaurant}) => {
                                 <span>{restaurant.description}</span>
                             </div>
                             <div className="mt-2">
+                                {restaurant.location_id &&
                                 <Link to={`/details/${restaurant.location_id}`}>
                                     <button className="btn btn-primary">
                                         Details
                                     </button>
                                 </Link>
+                                }
                             </div>
                         </div>
                     </div>
