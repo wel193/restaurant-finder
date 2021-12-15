@@ -9,7 +9,7 @@ import {findReviewsByRestaurantId} from "../../Services/review-service";
 import ReviewItem from "../Reviews/ReviewItem";
 import {fetchDetails} from "../../Services/travel-service";
 import {getUser} from '../../Services/userService';
-import {findRestaurantById} from '../../Services/restaurant-service';
+
 
 const DetailsScreen = () => {
     // assuming path is /details/:id
@@ -51,11 +51,13 @@ const DetailsScreen = () => {
             </div>
             <div className="mb-5">
                 <h1>Add a Review</h1>
-                {user &&
+                {user && user.role === 'USER' &&
                 <AddReview restaurant={restaurant} user={user}/>
                 }
                 {!user &&
-                <div className="alert alert-danger">Please login a user account to add a review.</div>}
+                <div className="alert alert-danger">Please login to add a review.</div>}
+              {user && user.role !== 'USER' &&
+              <div className="alert alert-danger">Only user can add a review.</div>}
             </div>
         </div>
     )

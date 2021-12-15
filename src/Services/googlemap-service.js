@@ -10,7 +10,7 @@ export const fetchRestaurants = (lat, lng) =>
           "method": "GET",
           "headers": {
             "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
-            "x-rapidapi-key": "deee31c169msh4751c1110662115p1ab8b8jsnec8483191d17"
+            "x-rapidapi-key": "746b551da5msh1eb4f0916f0884ap1b7acajsn79d6490228ef"
           }
         })
         .then(response => response.json())

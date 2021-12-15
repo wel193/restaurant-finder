@@ -8,6 +8,7 @@ const RegisterComponent = () => {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerRole, setRegisterRole] = useState("");
   const [errorMsg, setErrorMsg] = useState("")
+
   const navigate = useNavigate();
   const registerHandler = () => {
     userRegister({
@@ -22,7 +23,8 @@ const RegisterComponent = () => {
   return(
       <>
         <div className="d-flex card input-group">
-          <h3>{errorMsg}</h3>
+          {errorMsg &&
+          <h5 className="alert alert-danger">{errorMsg}</h5>}
           <div className="card-body">
             <h5 className="card-title">
               Register

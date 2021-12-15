@@ -5,6 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../../Services/userService';
 import FindItem from '../FindScreen/FindItem';
 import {findRestaurantsByAuthor} from '../../Services/restaurant-service';
+import {useNavigate} from 'react-router-dom';
+
 const selectUser = (state) => state.user;
 const selectRestaurants = (state) => state.restaurants;
 
@@ -13,6 +15,7 @@ const ProfileScreen = () => {
   const user = useSelector(selectUser)
   const restaurants = useSelector(selectRestaurants)
   const author_id = user? user._id : null;
+  const navigate = useNavigate();
   useEffect(()=>getUser(dispatch), [dispatch])
   useEffect(()=>findRestaurantsByAuthor(dispatch, author_id), [dispatch])
 
@@ -29,6 +32,11 @@ const ProfileScreen = () => {
           {user && user.role === 'HOST' && restaurants &&
           <div>
             <h1 className="mt-4">Your restaurant post</h1>
+            <button
+                className="btn btn-outline-secondary"
+                onClick={()=>navigate(`/post`)}>
+              Post Restaurant
+            </button>
             <ul className="list-group">
               {
                 restaurants.map(restaurant => {

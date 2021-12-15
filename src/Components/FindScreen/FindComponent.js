@@ -33,6 +33,7 @@ const FindComponent = () => {
             .catch(()=>{setErrMsg("Provided address is not valid"); setRestaurants([])})
     }
 
+    console.log(restaurants)
     return (
         <div>
             <div className="card text-white border-0">
@@ -77,7 +78,8 @@ const FindComponent = () => {
             <div>
                 <div>
                     <h1 className="mt-4">Results</h1>
-                    <h3>{errMsg}</h3>
+                    {errMsg &&
+                    <h5 className="alert alert-danger">{errMsg}</h5>}
                     <ul className="list-group">
                         {
                             restaurants.map(restaurant => {

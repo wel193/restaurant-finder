@@ -34,9 +34,9 @@ const HomeContent = (user) => {
                     </div>
                     <div className="card-text">
                         <h2>Most Recent Reviews</h2>
-                        <ul>
-                            {RecentReviews(reviews).map(review => <RecentReviewItem review={review}/>)}
-                        </ul>
+                        {/*<ul>*/}
+                        {/*    {RecentReviews(reviews).map(review => <RecentReviewItem review={review}/>)}*/}
+                        {/*</ul>*/}
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ import LogoutComponent from './Components/LogoutComponent';
 import profile from './Reducers/profile'
 import Privacy from "./Components/Privacy";
 import PostRestaurantScreen from './Components/PostRestaurantsScreen';
+import DetailsLocalScreen from './Components/DetailsScreen/LocalDetailScreen';
 
 const reducer = combineReducers({reviews, user, profile, restaurants});
 const store = createStore(reducer);
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/" element={<HomeScreen/>}></Route>
                         <Route path="/find" element={<FindScreen/>}></Route>
                         <Route path="/details/:id" element={<DetailsScreen/>}></Route>
+                        <Route path="/details/local/:id" element={<DetailsLocalScreen/>}></Route>
                         <Route path="/login" element={<LoginScreen/>}></Route>
                         <Route path="/register" element={<RegisterScreen/>}></Route>
                         <Route path="/profile" element={<ProfileScreen/>}></Route>

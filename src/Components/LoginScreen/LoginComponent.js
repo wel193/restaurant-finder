@@ -30,7 +30,8 @@ const LoginComponent = () => {
   return(
       <>
         <div className="d-flex card input-group">
-          <h3>{errorMsg}</h3>
+          {errorMsg &&
+          <h5 className="alert alert-danger">{errorMsg}</h5>}
           <div className="card-body">
             <h5 className="card-title">
               Login

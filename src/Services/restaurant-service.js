@@ -10,7 +10,7 @@ export const findRestaurantsByCity = (city) =>
 
 export const findRestaurantById = (id) =>
     fetch(`${RESTAURANT_API}/id/${id}`)
-        .then(response => response.json())
+        .then(response => {console.log("fetch restaurant by name", response.json); return response.json()})
 
 export const findRestaurantsByAuthor = (dispatch, author) =>
     fetch(`${RESTAURANT_API}/author/${author}`)

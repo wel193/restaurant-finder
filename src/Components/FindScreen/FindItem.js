@@ -40,6 +40,13 @@ const FindItem = ({restaurant}) => {
                                     </button>
                                 </Link>
                                 }
+                                {restaurant._id &&
+                                <Link to={`/details/local/${restaurant._id}`}>
+                                    <button className="btn btn-primary">
+                                        Details
+                                    </button>
+                                </Link>
+                                }
                             </div>
                         </div>
                     </div>

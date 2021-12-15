@@ -23,7 +23,7 @@ const RestaurantInfo = ({restaurant}) => {
 
             <div className="d-flex justify-content-center">
                 <img
-                    src={restaurant.photo? restaurant.photo.images.original.url:"/Images/restaurant-img-1.jpg"}
+                    src={restaurant.photo? restaurant.photo.images.large.url:"/Images/restaurant-img-1.jpg"}
                     width="80%"/>
             </div>
 
