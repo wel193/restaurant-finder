@@ -21,7 +21,6 @@ const AddReview = ({restaurant, user}) => {
             .then(status => navigate(`/details/${restaurant.location_id}`));
     }
 
-
     return (
         <div className="bg-transparent">
             <div className="form-group">

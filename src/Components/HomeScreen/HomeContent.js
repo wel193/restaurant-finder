@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './homeScreen.css';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {findAllReviews} from "../../Services/review-service";
+import RecentReviewItem from "./RecentReviewItem";
+import {RecentReviews} from "./RecentReviews";
 
 const HomeContent = (user) => {
     const currentUser = useSelector(state => state.user);
+    const reviews = useSelector(state => state.reviews);
+    const dispatch = useDispatch();
+
+    useEffect(() => findAllReviews(dispatch), []);
 
     return(
         <div>
@@ -19,16 +26,17 @@ const HomeContent = (user) => {
                 <img
                     src="/Images/restaurant-img-1.jpg"/>
                 <div className="card-body">
-                    <div className="card-title rf-font-60px">
+                    <div className="card-title text-center rf-font-60px mb-4">
                         {
                             currentUser &&
                             <div>Welcome back, {currentUser.username}!</div>
                         }
                     </div>
                     <div className="card-text">
-                        // Insert our content
-                        (Note: we have to consider displaying for two scenarios here -
-                        one for anonymous users, and one for logged-in users)
+                        <h2>Most Recent Reviews</h2>
+                        <ul>
+                            {RecentReviews(reviews).map(review => <RecentReviewItem review={review}/>)}
+                        </ul>
                     </div>
                 </div>
             </div>
