@@ -1,20 +1,15 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {userLogin} from "../../Services/userService";
-import {updateCurrentProfile, updateProfile} from "../../Services/profileService";
+import {getUser,updateUserProfile} from '../../Services/userService';
 
 
 const selectUser = (state) => state.user;
-const selectProfile = (state) => state.profile.profile;
 
 const ProfileComponent = () => {
     const dispatch = useDispatch();
-    const profile = useSelector(selectProfile)
-    console.log("============in profile component, profile:", profile)
     const user = useSelector(selectUser)
+    useEffect(()=>getUser(dispatch), [dispatch])
     console.log("============in profile component, user: ", user)
-
-
     // if (user) {
     //     const user_id = user.id;
     //     console.log("=====userid:", user_id)
@@ -23,68 +18,40 @@ const ProfileComponent = () => {
     // console.log("user name:", user.username)
     // console.log("user email:", user.email)
 
-    let [username, setUsername] = useState({newUsername: user.username});
-    let [address, setAddress] = useState({newAddress: user.address});
+    const [avatarIcon, setAvatarIcon] = useState(user.avatarIcon);
 
-    const nameChangeHandler = (e) => {
-        const username = e.target.value;
-        const newUsername = {newUsername : username};
-        setUsername(newUsername);
-    }
-    const addressChangeHandler = (e) => {
-        const address = e.target.value;
-        const newAddress = {newAddress : address};
-        setAddress(newAddress);
+    const avatarChangeHandler = (e) => {
+        setAvatarIcon(e.target.value)
     }
 
-    const saveClickHandler = () => {
-        updateProfile(dispatch, {
-            username: username.newUsername,
-            address: address.newAddress
+    const updateClickHandler = () => {
+        updateUserProfile(dispatch, {
+            avatarIcon: avatarIcon
         }).then((res) => {console.log("Profile Saved!", res)})
+            .catch(()=>console.log("update profile error"))
     }
-
 
     return(
         <>
-            <br/>
-            <div className="container">
-                <div className="col-10">
-                    <div style={{ fontSize: '20px' }}>
-                        Edit Profile
-                    </div>
-
+            <div className="d-flex card input-group">
+                <div className="card-body">
+                <h5 className="card-title">
+                    Register
+                </h5>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor="avatarIconUrl">Avatar Icon Url:</label>
+                    <input className="form-control" type="text" name='avatarIconUrl'
+                              placeholder={avatarIcon} onChange={avatarChangeHandler}>
+                            </input>
                 </div>
-
-                <div className="mt-2">
-                    <label htmlFor="name">Name</label>
-                    <textarea id="name" style={{width: "100%"}}
-                              value={username.newUsername} onChange={nameChangeHandler}>
-                                {user.username}
-                            </textarea>
-                </div>
-                <div className="mt-2 ">
-                    <label htmlFor="bio">Address</label>
-                    <textarea name='address' style={{width: "100%"}}
-                              value={user.newAddress} onChange={addressChangeHandler}>
-                                {user.address}
-                            </textarea>
-                </div>
-
-                <div className="col-1">
+                <div className="mb-3">
                         <button className="btn btn-success btn-block"
-                                onClick={saveClickHandler}>
+                                onClick={updateClickHandler}>
                                 Save
                         </button>
                 </div>
-
-
-
+                </div>
             </div>
-
-
-
-
         </>
     )
 };

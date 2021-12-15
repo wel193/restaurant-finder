@@ -1,4 +1,3 @@
-
 let REGISTER_API = 'http://localhost:4000/register'
 let LOGIN_API = 'http://localhost:4000/login'
 let USER_API = 'http://localhost:4000/user'
@@ -46,3 +45,19 @@ export const userLogout = (dispatch) =>
   //   type: "user-logout"
   //   }))
   .catch(e=>console.error(e))
+
+
+export const updateUserProfile = (dispatch,info) =>
+    fetch(USER_API, {
+        method: 'PUT',
+        body: JSON.stringify(info),
+        headers:{
+        'content-type': 'application/json',
+        }
+    })
+    .then(response => {console.log("update user", response.json); return response.json()})
+    .then(profile=>
+      dispatch({
+        type: "update-user-profile",
+        profile
+      }))

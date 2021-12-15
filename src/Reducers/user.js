@@ -1,3 +1,4 @@
+
 const user = (state=null, action) =>{
   switch (action.type){
     case 'fetch-user':
@@ -10,6 +11,9 @@ const user = (state=null, action) =>{
     case 'user-logout':
       console.log("reducer logout", action.user)
       return null
+    case "update-user-profile":
+      console.log("reducer update", action.user)
+      return ({...state, ...action.user})
     default:
       return state
   }
